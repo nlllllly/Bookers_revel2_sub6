@@ -3,7 +3,7 @@
     <div class="row">
     
         <p><%= notice %></p>
-
+    
         <div class="col-xs-3">
             <h2>User info</h2>
             <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
@@ -46,31 +46,31 @@
         
 <%# RIGHT MAINCONTENTS %>
         <div class="col-xs-9">
-            <h2>Books</h2>
-            <table class="table table-hover table-inverse">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Title</th>
-                        <th>Opinion</th>
-                    </tr>
-                </thead>
+            <h2>Book detail</h2>
+            <table class="table">
                 <tbody>
-                    <% @my_books.each do |my_book| %>
+                
                         <tr>
                             <td>
-                                <%= link_to user_path(@user.id) do %>
+                                <%= link_to user_path(@book.user_id) do %>
                                     <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "pull-left profile-thumb", fallback: "no_image-icon.jpg" %>
+                                    <br><br>
+                                    <%= @user.name %>
                                 <% end %>
                             </td>
                             <td>
-                                <%= link_to book_path(my_book.id) do %>
-                                    <%= my_book.title %>
+                                <%= link_to book_path(@book.id) do %>
+                                    <%= @book.title %>
                                 <% end %>
                             </td>
-                            <td><%= my_book.body %></td>
+                            <td><%= @book.body %></td>
+                            <% if @user == current_user %>
+                                <td><%= link_to 'Edit', edit_book_path(@book.id), class:"btn-sm btn-success" %><td>
+                                <td><%= link_to 'Destroy', book_path(@book.id), method:'delete', data: { confirm:"本当に消しますか？"}, class:"btn-sm btn-danger" %></td>
+                            <% end %>
                         </tr>
-                    <% end %>
+
+
                 </tbody>
             </table>
         </div>

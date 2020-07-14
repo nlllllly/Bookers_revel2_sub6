@@ -1,14 +1,45 @@
+<%# LEFT SIDEBAR %>
+<div class="container">
+    <div class="row">
 
+        <div class="col-xs-3">
+            <h2>User info</h2>
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "pull-left profile-thumb", fallback: "no_image.jpg" %>
+            <table class="table">
+                <tbody>
+                    <tr></tr>
+                    <tr>
+                        <th>name</th>
+                        <th><%= current_user.name %></th>
+                    </tr>
+                    <tr>
+                        <th>introduction</th>
+                        <th><%= current_user.introduction %></th>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <%= link_to "", edit_user_path(current_user) ,class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_20819" %>
+            </div>
 
-
-
-<%# サイドバーは完成してからいれる！ %>
-
-
-
-
-
-
+<%# RIGHT MAINCONTENTS %>
+            <h2>New Book</h2>
+                <%= form_for @book_new do |f| %>
+                    <div class="field row">    
+                        <label>Title</label><br>
+                        <%= f.text_field :title, class:"col-xs-12" %>
+                    </div>
+                    <br>
+                    <div class="field row">    
+                        <label>Opinion</label><br>
+                        <%= f.text_area :body, class:"col-xs-12" %>
+                    </div>
+                    <br>
+                    <div class="actions row">
+                        <%= f.submit class:"btn btn-primary col-xs-12" %>
+                    </div>
+                <% end %>
+        </div>
 
 
         <div class="col-xs-9">

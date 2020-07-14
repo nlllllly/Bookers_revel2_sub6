@@ -1,0 +1,38 @@
+<%# EDIT PROFILE %>
+<div class="container">
+
+    <h2>User info</h2>
+
+    <% if @user.errors.any? %>
+        <div id="error_explanation" style="color: red">
+            <h3><%= @user.errors.count%> errors prohibited this obj from being saved:</h3>
+            <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <%= form_for @user do |f| %>
+        <div class="field row">    
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </div>
+        <br>
+        <div class="field row">    
+            <%= f.label :image %>
+            <%= f.attachment_field :profile_image %>
+        </div>
+        <br>
+        <div class="field row">    
+            <%= f.label :introduction %>
+            <%= f.text_area :introduction %>
+        </div>
+        <br>
+        <div class="actions row">
+            <%= f.submit %>
+        </div>
+    <% end %>
+
+</div>
