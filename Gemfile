@@ -5,10 +5,13 @@ ruby '2.5.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
+gem 'actionpack', '>= 5.2.4.3'
+gem 'activestorage', '>= 5.2.4.3'
+gem 'activesupport', '>= 5.2.4.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '>= 3.12.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -59,16 +62,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
-
-# original
 gem 'devise'
-
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
 gem 'jquery-rails'
-
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
-
-
+gem 'bootstrap-sass', '~> 3.4.1'
