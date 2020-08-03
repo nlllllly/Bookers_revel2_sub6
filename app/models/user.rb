@@ -42,4 +42,23 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+
+  # @user検索の完全・前方・後方・一部一致の定義
+  def self.search(search,word)
+    if search == "perfect_match"
+      @users = User.where("name LIKE?","#{word}")
+    elsif search == "forward_match"
+      @users = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @users = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @users = User.where("name LIKE?","%#{word}%")
+    else
+      @users = User.all
+    end
+end
+
+
+
 end
